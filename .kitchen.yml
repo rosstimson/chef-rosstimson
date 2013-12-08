@@ -1,0 +1,16 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: debian-7.2.0
+  - name: centos-6.5
+  - name: freebsd-9.2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[rosstimson::default]
