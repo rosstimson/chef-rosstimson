@@ -7,24 +7,23 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{bash zsh curl wget git}.each do |pkg|
+include_recipe 'chef-sugar::default'
+
+if debian?
+  include_recipe 'apt'
+end
+
+%w{bash zsh less curl wget git build-essential tree tmux}.each do |pkg|
   package pkg do
     action :install
   end
 end
 
-link '/usr/bin/bash' do
-  to '/usr/local/bin/bash'
-end
-
-link '/usr/bin/zsh' do
-  to '/usr/local/bin/zsh'
-end
-
 user 'rosstimson' do
-  supports :manage_home => true
-  shell '/usr/local/bin/zsh'
+  shell '/bin/zsh'
   password '$1$Hv3zo1/O$Q1HsO8bqAhz8EpxVnP1//0'
+  supports :manage_home => true
+  home '/home/rosstimson'
   action :create
 end
 
@@ -37,3 +36,7 @@ git '/home/rosstimson/dotfiles' do
   group 'rosstimson'
 end
 
+execute 'make' do
+  cwd '/home/rosstimson/dotfiles'
+  user 'rosstimson'
+end

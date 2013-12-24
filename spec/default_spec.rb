@@ -11,6 +11,10 @@ describe 'rosstimson::default' do
     expect(chef_run).to install_package('zsh')
   end
 
+  it 'installs less' do
+    expect(chef_run).to install_package('less')
+  end
+
   it 'installs curl' do
     expect(chef_run).to install_package('curl')
   end
@@ -23,17 +27,19 @@ describe 'rosstimson::default' do
     expect(chef_run).to install_package('git')
   end
 
-  it 'symlinks bash into /usr/local/bin' do
-    expect(chef_run).to create_link('/usr/bin/bash')
-      .with(to: '/usr/local/bin/bash')
+  it 'installs build-essential' do
+    expect(chef_run).to install_package('build-essential')
   end
 
-  it 'symlinks zsh into /usr/local/bin' do
-    expect(chef_run).to create_link('/usr/bin/zsh')
-      .with(to: '/usr/local/bin/zsh')
+  it 'installs tree' do
+    expect(chef_run).to install_package('tree')
   end
 
-  it 'creates user rosstimson & sets shell + password' do
+  it 'installs tmux' do
+    expect(chef_run).to install_package('tmux')
+  end
+
+  it 'creates rosstimson user & sets shell + password' do
     expect(chef_run).to create_user('rosstimson')
       .with(shell: '/usr/local/bin/zsh',
             password: '$1$Hv3zo1/O$Q1HsO8bqAhz8EpxVnP1//0')
