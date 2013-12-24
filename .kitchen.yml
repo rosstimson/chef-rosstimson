@@ -1,14 +1,19 @@
 ---
-driver:
-  name: vagrant
 
 provisioner:
   name: chef_solo
 
 platforms:
-  - name: debian-7.2.0
+  - name: debian-7.3.0
+    driver_plugin: docker
+    driver_config:
+      image: rosstimson/debian:wheezy
+      platform: debian
   - name: centos-6.5
-  - name: freebsd-9.2
+    driver_plugin: docker
+    driver_config:
+      image: rosstimson/centos:6.5
+      platform: centos
 
 suites:
   - name: default
