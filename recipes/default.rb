@@ -4,12 +4,14 @@
 #
 # Copyright (C) 2013 Ross Timson <ross@rosstimson.com>
 #
-# All rights reserved - Do Not Redistribute
+# This work is free. You can redistribute it and/or modify it under the
+# terms of the Do What The Fuck You Want To Public License, Version 2,
+# as published by Sam Hocevar. See the LICENSE file or http://www.wtfpl.net/
+# for more details.
 #
 
-include_recipe 'chef-sugar::default'
-
-if debian?
+case node['platform_family']
+when 'debian'
   include_recipe 'apt'
 end
 
