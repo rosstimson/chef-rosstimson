@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
+gem 'berkshelf', '~> 2.0'
 gem 'foodcritic'
 gem 'thor-foodcritic'
-gem 'chefspec'
+gem 'chefspec', '~> 3.1'
 gem 'strainer'
 gem 'rubocop'
 
