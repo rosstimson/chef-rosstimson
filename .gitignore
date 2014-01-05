@@ -12,6 +12,7 @@ bin/*
 .bundle/*
 
 .rspec
+.coverage/
 
 .kitchen/
 .kitchen.local.yml
